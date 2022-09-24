@@ -1,1 +1,1 @@
-web: gunicorn lipApi.wsgi
+web: gunicorn libApi.wsgi
