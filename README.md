@@ -15,7 +15,7 @@
     "last_name": "something"
 }
 ```
-3. To refresh your access token make POST request to https://library-api-mustafa.herokuapp.com/api/token/ with Json content:
+3. make POST request to https://library-api-mustafa.herokuapp.com/api/token/ with Json content:
 ```bash
 {
     "username": "someone",
@@ -23,7 +23,7 @@
 }
 ```
 4. copy your access token which is valid for one day and has to be refreshed using the refresh token.
-5. make POST request to https://library-api-mustafa.herokuapp.com/api/token/refresh/ with Json content:
+5. TO refresh the access token make POST request to https://library-api-mustafa.herokuapp.com/api/token/refresh/ with Json content:
 ```bash
 {
     "refresh": "YourRereshToken",
