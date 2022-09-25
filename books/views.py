@@ -10,11 +10,25 @@ from rest_framework.decorators import authentication_classes, permission_classes
 from .serializers import RegisterSerializer
 from rest_framework import generics
 
+@api_view(['POST'])
+@permission_classes([])
+def create_auth(request):
+    if request.method == "POST":    	
+ 	   serializer = RegisterSerializer(data=request.data)
+ 	   if serializer.is_valid():
+ 	   	serializer.validate(attrs=request.data)
+ 	   	user = serializer.create(validated_data=request.data)
+ 	   	
+ 	   	return Response(serializer.data, status=status.HTTP_201_CREATED)
+ 	   	
+ 	   else:	   	
+ 	   	return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
-class RegisterView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    permission_classes = (AllowAny,)
-    serializer_class = RegisterSerializer
+
+#class RegisterView(generics.CreateAPIView):
+#    queryset = User.objects.all()
+#    permission_classes = (AllowAny,)
+#    serializer_class = RegisterSerializer
     
 # Create your views here.
 @api_view(['GET', 'POST'])	
