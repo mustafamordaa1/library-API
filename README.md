@@ -38,7 +38,7 @@
 | [/api/token/](https://library-api-mustafa.herokuapp.com/api/token/)  | POST | username, password | No Headers | refresh, access Tokens |
 | [/api/token/refresh/](https://library-api-mustafa.herokuapp.com/api/token/refresh/)  | POST | refresh token | No Headers | new access token, refresh token |
 | [api/register/](https://library-api-mustafa.herokuapp.com/api/register/) | POST | username, password, password2, email, first_name, last_name | No Headers | 201 created |
-> examples for Non Headers end points... [see](https://github.com/mustafamordaa1/library-API/new/main?readme=1#getting-the-tokens-)
+> examples for Non Headers end points.. [see](https://github.com/mustafamordaa1/library-API/tree/main#getting-the-tokens-)
 # playing with the Data :
 > Note : in all the following requsts **You have to** include the access token in the authorization header, see the example below.
 ```
