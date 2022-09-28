@@ -18,8 +18,10 @@ def create_auth(request):
  	   if serializer.is_valid():
  	   	serializer.validate(attrs=request.data)
  	   	user = serializer.create(validated_data=request.data)
- 	   	
- 	   	return Response(serializer.data, status=status.HTTP_201_CREATED)
+ 	   	token_serializer = MyTokenObtainPairSerializer(data= request.data)
+ 	   	tokens = serializer.validate(attrs= request.data)
+                
+ 	   	return Response(tokens, status=status.HTTP_201_CREATED)
  	   	
  	   else:	   	
  	   	return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
