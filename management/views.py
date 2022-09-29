@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .serializers import BookSerializer, BorrowSerializer
+from books.serializers import BookSerializer, BorrowSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
