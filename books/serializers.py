@@ -41,6 +41,18 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
+    def validate(self, attrs):
+        data = super().validate(attrs)
+        refresh = self.get_token(self.user)
+        data['refresh'] = str(refresh)
+        data['access'] = str(refresh.access_token)
+
+        # Add extra responses here
+        data['username'] = self.user.username
+
+        return data
         
 class UserSerializer(serializers.ModelSerializer):
      class Meta:
