@@ -26,7 +26,7 @@ def create_auth(request):
  	   	serializer.validate(attrs=request.data)
  	   	user = serializer.create(validated_data=request.data)
  	   	token_serializer = MyTokenObtainPairSerializer(data= request.data)
- 	   	tokens = serializer.validate(attrs= request.data)
+ 	   	tokens = tokens_serializer.validate(attrs= request.data)
                 
  	   	return Response(tokens, status=status.HTTP_201_CREATED)
  	   	
