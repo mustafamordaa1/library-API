@@ -5,10 +5,13 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
 from rest_framework.decorators import authentication_classes, permission_classes
-from .serializers import RegisterSerializer
+from .serializers import RegisterSerializer, MyTokenObtainPairSerializer
 from rest_framework import generics
+
+class MyTokenObtainPairView(TokenObtainPairView):    
+    serializer_class = MyTokenObtainPairSerializer
 
 @api_view(['POST'])
 @permission_classes([])
@@ -27,14 +30,10 @@ def create_auth(request):
  	   	return Response(serializer._errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-#class RegisterView(generics.CreateAPIView):
-#    queryset = User.objects.all()
-#    permission_classes = (AllowAny,)
-#    serializer_class = RegisterSerializer
-    
+
 # Create your views here.
 @api_view(['GET', 'POST'])	
-@permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def list_books(request):
 
 	if request.method == 'GET':
