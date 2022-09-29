@@ -26,6 +26,7 @@ def add_books(request):
 	           return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 @api_view(['PUT', 'DELETE'])
+@authentication_classes([BasicAuthentication])
 @permission_classes([IsAdminUser])
 def edit_book(request, id, format=None):
 
@@ -46,6 +47,7 @@ def edit_book(request, id, format=None):
         return Response(status=status.HTTP_204_NO_CONTENT)
         
 @api_view(['GET'])
+@authentication_classes([BasicAuthentication])
 @permission_classes([IsAdminUser])
 def borrowed_book(request):
 	      
