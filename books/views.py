@@ -36,7 +36,7 @@ def create_auth(request):
 
 
 # Create your views here.
-@api_view(['GET', 'POST'])	
+@api_view(['GET'])	
 @permission_classes([IsAuthenticatedOrReadOnly])
 def list_books(request):
 
@@ -45,14 +45,8 @@ def list_books(request):
 	       serializer = BookSerializer(books, many=True)
 	       return Response(serializer.data)
 	       
-	if request.method == 'POST':
-	       serializer = BookSerializer(data=request.data)
-	       if serializer.is_valid():
-	           serializer.save()
-	           return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-
-@api_view(['GET', 'PUT', 'DELETE'])
+	
+@api_view(['GET'])
 def book_detail(request, id, format=None):
 
     try:
@@ -64,31 +58,14 @@ def book_detail(request, id, format=None):
         serializer = BookSerializer(book)
         return Response(serializer.data)
 
-    elif request.method == 'PUT':
-        serializer = BookSerializer(book, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    elif request.method == 'DELETE':
-        book.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-        
-
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 def borrow_book(request):
-	      
-	if request.method == 'GET':
-	       borrows =  borrow.objects.all()
-	       serializer = BorrowSerializer(borrows, many=True)
-	       return Response(serializer.data)
-	       
-	if request.method == 'POST':
-	       serializer = BorrowSerializer(data=request.data)
-	       if serializer.is_valid():
-	           serializer.save()
-	           return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+   if request.method == 'POST':
+      serializer = BorrowSerializer(data=request.data)
+      if serializer.is_valid():
+         serializer.save()
+	 return Response(serializer.data, status=status.HTTP_201_CREATED)
 	                         	 
 @api_view(['GET', 'PUT', 'DELETE'])
 def user_books(request, id, format=None):
