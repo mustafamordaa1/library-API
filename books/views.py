@@ -9,6 +9,10 @@ from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticate
 from rest_framework.decorators import authentication_classes, permission_classes
 from .serializers import RegisterSerializer, MyTokenObtainPairSerializer
 from rest_framework import generics
+from django.views.decorators.csrf import csrf_exempt
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.views import TokenObtainPairView
+from django.shortcuts import get_object_or_404
 
 class MyTokenObtainPairView(TokenObtainPairView):    
     serializer_class = MyTokenObtainPairSerializer
