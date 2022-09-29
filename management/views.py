@@ -1,18 +1,13 @@
 from django.shortcuts import render
-from .serializers import BookSerializer, BorrowSerializer, RegisterSerializer
+from .serializers import BookSerializer, BorrowSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
 from rest_framework.permissions import IsAdminUser
 from rest_framework.decorators import authentication_classes, permission_classes
-from .serializers import RegisterSerializer
 from rest_framework import generics
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.views import TokenObtainPairView
-from django.shortcuts import get_object_or_404
-from django.contrib.auth.hashers import make_password
 from django.contrib.auth import authenticate, login, logout
 from books.models import Book, borrow
 from rest_framework.authentication import  BasicAuthentication
