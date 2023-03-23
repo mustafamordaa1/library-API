@@ -4,7 +4,7 @@
 # Getting the tokens :
 
 1. to test the API open postman software.
-2. make POST requests to https://library-api-mustafa.herokuapp.com/api/register/ with Json content :
+2. make POST requests to /api/register/ with Json content :
 ```bash
 {
     "username": "someone",
@@ -15,7 +15,7 @@
     "last_name": "something"
 }
 ```
-3. make POST request to https://library-api-mustafa.herokuapp.com/api/token/ with Json content:
+3. make POST request to /api/token/ with Json content:
 ```bash
 {
     "username": "someone",
@@ -23,7 +23,7 @@
 }
 ```
 4. copy your access token which is valid for one day and has to be refreshed using the refresh token.
-5. TO refresh the access token make POST request to https://library-api-mustafa.herokuapp.com/api/token/refresh/ with Json content:
+5. TO refresh the access token make POST request to /api/token/refresh/ with Json content:
 ```bash
 {
     "refresh": "YourRereshToken",
@@ -44,7 +44,7 @@
 ```
 Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY0MjEyMDA5LCJpYXQiOjE2NjQxMjU2MDksImp0aSI6IjUwMWU4NjA4OGQyYTRmYjliOTA5NjcxYzIwNmI1Yzg0IiwidXNlcl9pZCI6MX0.a3oVrCh5S0AGoLKEvltuPmRCKTJy-h1praIausRorKI
 ```
-1. To list All the books make GET request to https://library-api-mustafa.herokuapp.com/api/books/ the response would be like that :
+1. To list All the books make GET request to /api/books/ the response would be like that :
 ```bash
 [
     {
@@ -62,7 +62,7 @@ Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhw
 ```
 > **You can also add books using POST request, the content would be in the same format as the response but without brackets [ .. ] and accepts only one book for each request.**
 
-2. To view one book details make GET request to https://library-api-mustafa.herokuapp.com/api/books/book_id and the response would be like :
+2. To view one book details make GET request to /api/books/book_id and the response would be like :
 ```bash
 {
     "id": 39,
@@ -76,7 +76,7 @@ Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhw
 ```
 > **You can also make PUT and DELETE requests.**
 
-3. To view all the borrowed books make GET request to https://library-api-mustafa.herokuapp.com/api/borrow/
+3. To view all the borrowed books make GET request to /api/borrow/
 ```bash
 [
     {
@@ -124,7 +124,7 @@ Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhw
 
 ]
 ```
-4. You can borrow books by making POST request to https://library-api-mustafa.herokuapp.com/api/borrow/, the content should be like :
+4. You can borrow books by making POST request to /api/borrow/, the content should be like :
 ```bash
    {
        "user": 3,
